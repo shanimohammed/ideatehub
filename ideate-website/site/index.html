@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F0F0F">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ideate Hub Ghana">
+<meta property="og:description" content="Strategy-led marketing and communications agency in Tamale, Northern Ghana, working with NGOs, businesses and startups.">
+<meta property="og:image" content="assets/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>Ideate Hub Ghana</title>
+<meta name="description" content="Ideate Hub Ghana is a strategy-led marketing and communications agency in Tamale, Northern Ghana, working with NGOs, businesses and startups.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..900;1,300..900&display=swap">
+<style>
+/* Layout: dark-first brand site. The process is the hero (three giant words that drift apart on scroll and catch
+   an amber spotlight under the cursor); a moving service marquee; headings and leads light up word by word as they
+   scroll in; case studies stack like pages; floating pill nav keeps every link on every width. */
+:root {
+  --bg: #0F0F0F;
+  --surface: #1E1E1E;       /* brand near-black, used for raised panels */
+  --line: #2E2D2A;
+  --text: #F5F5F2;
+  --muted: #A9A49A;         /* 8:1 on bg */
+  --dim-lg: #66615A;        /* unlit large words: 3.1:1 */
+  --dim: #8A847A;           /* unlit body-size words: 5.2:1 */
+  --amber: #F5A623;
+  --tint: #FDE8BA;
+
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: clamp(2rem, 5vw, 3.5rem);
+  --step-4: clamp(2.1rem, 5.6vw, 4.5rem);
+  --display: clamp(1.9rem, 7.6vw, 8rem);
+
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --max: 1240px;
+  --section: clamp(80px, 12vw, 160px);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  overflow-x: clip;
+}
+h1, h2, h3, p, ul { margin: 0; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.05; }
+a { color: inherit; }
+::selection { background: var(--amber); color: var(--bg); }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+.wrap {
+  max-width: calc(var(--max) + 48px);
+  margin-inline: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter-r);
+}
+@media (min-width: 720px) { .wrap { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); } }
+
+.skip {
+  position: absolute; left: 16px; top: -60px; z-index: 60;
+  background: var(--amber); color: var(--bg); padding: 10px 16px; border-radius: 999px; text-decoration: none; font-weight: 700;
+}
+.skip:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
+
+/* ---------- Wordmark (reversed, all-white on dark per brand rules) ---------- */
+.mark { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.bulb { height: 34px; width: auto; flex: none; display: block; }
+.logo-full { width: 132px; height: auto; display: block; }
+.wordmark { display: grid; line-height: 1; }
+.wordmark b { font-weight: 900; font-size: 1.2rem; letter-spacing: -0.01em; }
+.wordmark b span { font-weight: 300; }
+.wordmark small { font-size: 0.5rem; letter-spacing: 0.34em; font-weight: 500; margin-top: 4px; }
+
+/* ---------- Header ---------- */
+.top { padding-block: 24px; position: relative; z-index: 2; }
+.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.where { font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 8px; }
+.where i { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); display: inline-block; }
+@media (prefers-reduced-motion: no-preference) { .where i { animation: pulse 2.4s ease-in-out infinite; } }
+@keyframes pulse { 50% { opacity: 0.3; } }
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(32px, 6vw, 72px) clamp(48px, 7vw, 96px); }
+.hero h1 { display: grid; gap: clamp(10px, 1.6vw, 22px); }
+.line { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.word {
+  font-size: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text);
+  justify-self: start;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .word {
+    background: radial-gradient(circle 15vmax at var(--mx, -100vmax) var(--my, -100vmax), var(--amber) 0%, var(--amber) 30%, var(--text) 75%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+}
+.note {
+  font-size: var(--step--1);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 27ch;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.note b { display: block; color: var(--text); font-weight: 700; }
+.wordline { display: flex; align-items: flex-end; justify-self: start; font-size: var(--display); }
+.stop { position: relative; flex: none; width: 0.3em; margin-left: 0.06em; margin-bottom: 0.02em; }
+.stop img { position: relative; width: 100%; height: auto; display: block; }
+.stop::before {
+  content: ""; position: absolute; left: 50%; top: 30%; width: 1.7em; height: 1.7em;
+  transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.5), rgba(245, 166, 35, 0) 65%);
+  opacity: var(--glow, 0.35); transition: opacity 0.3s ease;
+}
+@media (max-width: 759px) { :root { --display: 10.2vw; } }
+@media (min-width: 760px) {
+  .line { grid-template-columns: auto 1fr; align-items: end; column-gap: clamp(16px, 2.4vw, 36px); }
+  .line .note { padding-bottom: 0.5em; }
+  .line.l2 { grid-template-columns: 1fr auto; }
+  .line.l2 .note { order: -1; justify-self: end; text-align: right; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .line { animation: slide-in 1.1s cubic-bezier(.2,.7,.1,1) both; }
+  .line.l1 { --from: -8vw; }
+  .line.l2 { --from: 8vw; animation-delay: 0.08s; }
+  .line.l3 { --from: -5vw; animation-delay: 0.16s; }
+  @keyframes slide-in { from { transform: translateX(var(--from)); } }
+}
+.intro {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: end; justify-content: space-between;
+}
+.intro p { font-size: var(--step-1); max-width: 34ch; line-height: 1.45; }
+.segments { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+.segments li { border: 1.5px solid var(--line); border-radius: 999px; padding: 7px 14px; font-size: var(--step--1); font-weight: 600; color: var(--muted); }
+
+/* ---------- Marquee ---------- */
+.marquee { border-block: 1px solid var(--line); padding-block: clamp(18px, 2.4vw, 28px); overflow: hidden; }
+.track { display: flex; width: max-content; will-change: transform; }
+.track ul { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; }
+.track li {
+  display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); padding-right: clamp(20px, 3vw, 40px);
+  font-size: clamp(1.75rem, 4.6vw, 4rem); font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase; white-space: nowrap; line-height: 1.1;
+}
+.track li:nth-child(even) { color: transparent; -webkit-text-stroke: 1.5px var(--muted); }
+.track li::after { content: ""; width: 0.32em; height: 0.32em; border-radius: 50%; background: var(--amber); flex: none; }
+@media (prefers-reduced-motion: reduce) { .marquee { overflow-x: auto; } }
+
+/* ---------- Scroll-lit text ---------- */
+.lit .w { color: var(--dim-lg); transition: color 0.3s ease; }
+.lit.sm .w { color: var(--dim); }
+.lit .w.on { color: var(--text); }
+.lit .w.hl.on { color: var(--amber); }
+
+/* ---------- Statement ---------- */
+.band { padding-block: var(--section); }
+.statement { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; max-width: 19ch; }
+.band-foot { margin-top: 40px; display: flex; gap: 12px; align-items: center; color: var(--muted); }
+.band-foot .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--amber); flex: none; }
+
+/* ---------- Sections ---------- */
+.section { padding-block: var(--section); }
+
+/* Section backdrops: greyscale photos kept dim and faded into the black on the text side and at the
+   section edges, so they set the mood without competing with the content */
+.hero, .band, .section { position: relative; isolation: isolate; }
+.bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.bg img {
+  position: absolute; top: -8%; right: 0;
+  width: min(58%, 820px); height: 116%;
+  object-fit: cover; object-position: var(--pos, center);
+  opacity: var(--o, 0.28);
+  filter: grayscale(1) brightness(0.72) contrast(1.05);
+  -webkit-mask-image: linear-gradient(to left, #000 30%, transparent 96%), linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to left, #000 30%, transparent 96%), linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  mask-composite: intersect;
+}
+.bg.left img {
+  right: auto; left: 0;
+  -webkit-mask-image: linear-gradient(to right, #000 30%, transparent 96%), linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  mask-image: linear-gradient(to right, #000 30%, transparent 96%), linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+}
+@media (max-width: 759px) {
+  /* On phones the photo sits behind the text, so it is fainter */
+  .bg img, .bg.left img { width: 100%; opacity: calc(var(--o, 0.28) * 0.55); }
+}
+.head { display: grid; gap: 18px; margin-bottom: clamp(40px, 6vw, 72px); max-width: 42ch; }
+.head h2, .rooted h2 { font-size: var(--step-3); font-weight: 800; letter-spacing: -0.035em; }
+.head p { font-size: var(--step-1); line-height: 1.45; }
+
+/* Rise-in: transform only, so text is readable before and during the move */
+@media (prefers-reduced-motion: no-preference) {
+  [data-rise] { transform: translateY(36px); transition: transform 0.9s cubic-bezier(.2,.7,.1,1); }
+  [data-rise].in { transform: none; }
+}
+
+/* Services */
+.services { border-top: 2px solid var(--text); }
+.svc {
+  position: relative;
+  display: grid; gap: 12px 32px;
+  padding-block: 30px 34px;
+  border-bottom: 1px solid var(--line);
+}
+.svc::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 0; background: var(--surface); z-index: -1;
+  transition: width 0.5s cubic-bezier(.2,.7,.1,1);
+}
+.svc:hover::before { width: 100%; }
+.services { position: relative; z-index: 0; }
+@media (min-width: 860px) { .svc { grid-template-columns: 1.1fr 1.2fr 1.5fr; align-items: start; padding-inline: 12px; } }
+.svc h3 { font-size: var(--step-2); font-weight: 800; letter-spacing: -0.025em; display: flex; gap: 12px; align-items: baseline; transition: color 0.3s ease; }
+.svc:hover h3 { color: var(--amber); }
+.svc .for { color: var(--muted); max-width: 36ch; }
+.svc ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.svc li { border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; font-size: 0.875rem; color: var(--text); background: var(--bg); transition: border-color 0.3s ease; }
+.svc:hover li { border-color: #4A4740; }
+
+/* Work: stacking pages */
+.work { display: grid; gap: 28px; }
+.case {
+  display: grid; gap: 24px 48px; align-items: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
+  padding: clamp(16px, 2.4vw, 28px);
+  transform-origin: 50% 0;
+}
+@media (min-width: 860px) {
+  .case { grid-template-columns: 1.3fr 1fr; }
+}
+@media (min-width: 860px) and (min-height: 640px) {
+  .case { position: sticky; top: calc(72px + var(--i, 0) * 18px); }
+  .work { gap: 18vh; padding-bottom: 6vh; }
+}
+.visual {
+  aspect-ratio: 3 / 2; max-width: 100%;
+  border-radius: 14px; overflow: hidden; position: relative;
+  background: var(--bg);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.4s ease;
+}
+.visual img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transform: scale(1.06) translate(var(--tx, 0px), var(--ty, 0px)); transition: transform 0.4s ease;
+}
+.visual.fit { background: #FFFFFF; }
+.visual.fit img { object-fit: contain; transform: scale(1) translate(var(--tx, 0px), var(--ty, 0px)); }
+.case .meta { font-size: var(--step--1); color: var(--muted); margin-bottom: 12px; }
+.case h3 { font-size: var(--step-2); font-weight: 750; letter-spacing: -0.025em; margin-bottom: 12px; }
+.case p { color: var(--muted); max-width: 44ch; }
+.case p + p { margin-top: 12px; }
+.case blockquote {
+  margin: 20px 0 0; padding-left: 16px; border-left: 3px solid var(--amber);
+  font-size: var(--step-1); font-weight: 600; line-height: 1.35; color: var(--text); max-width: 32ch;
+}
+.thumbs { display: flex; gap: 10px; margin-top: 20px; }
+.thumbs img { width: 96px; height: 72px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+
+/* Studio gallery: drag or swipe sideways */
+.gallery-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 28px; }
+.gallery-head h2 { font-size: var(--step-3); font-weight: 800; letter-spacing: -0.035em; }
+.gallery-head p { color: var(--muted); font-size: var(--step--1); }
+.strip {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity;
+  padding-bottom: 14px; scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+  padding-left: var(--gutter); padding-right: var(--gutter-r);
+  scroll-padding-left: var(--gutter);
+}
+@media (min-width: 720px) { .strip { padding-left: max(24px, calc((100vw - var(--max)) / 2)); scroll-padding-left: max(24px, calc((100vw - var(--max)) / 2)); } }
+.strip.dragging { scroll-snap-type: none; cursor: grabbing; }
+.strip figure { margin: 0; flex: none; scroll-snap-align: start; }
+.strip img {
+  height: clamp(260px, 38vw, 420px); width: auto; display: block; border-radius: 14px; border: 1px solid var(--line);
+  -webkit-user-drag: none; user-select: none;
+  transition: transform 0.4s ease;
+}
+.strip figure:hover img { transform: translateY(-6px); }
+.strip figcaption { margin-top: 12px; font-size: var(--step--1); color: var(--muted); max-width: 34ch; }
+.strip figcaption b { display: block; color: var(--text); font-weight: 700; }
+
+/* Rooted */
+.rooted { background: var(--surface); border-block: 1px solid var(--line); }
+.rooted-grid { display: grid; gap: 40px 64px; }
+@media (min-width: 900px) { .rooted-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
+.rooted .copy { display: grid; gap: 20px; font-size: var(--step-1); line-height: 1.5; max-width: 40ch; }
+.reach { display: grid; gap: 28px; }
+.reach h3 { font-size: var(--step--1); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.reach ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.reach li { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-weight: 600; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease; }
+.reach li:hover { background: var(--amber); color: var(--bg); border-color: var(--amber); }
+
+/* Contact */
+.contact h2 { font-size: clamp(2.4rem, 7.6vw, 6.75rem); font-weight: 850; letter-spacing: -0.045em; line-height: 0.95; max-width: 13ch; }
+.rows { margin-top: clamp(40px, 6vw, 72px); border-top: 2px solid var(--text); }
+.row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+.row .k { font-size: var(--step--1); color: var(--muted); min-width: 130px; }
+.row .v { font-size: clamp(1.125rem, 2.6vw, 1.75rem); font-weight: 600; flex: 1 1 260px; min-width: 0; overflow-wrap: anywhere; user-select: all; }
+.btn {
+  font: inherit; font-size: var(--step--1); font-weight: 700;
+  background: transparent; color: var(--text); border: 1.5px solid var(--text); border-radius: 999px;
+  padding: 10px 20px; min-height: 44px; cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.btn:hover { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+a.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.btn.primary { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+.btn.primary:hover { background: #FFB94A; border-color: #FFB94A; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+.social { margin-top: clamp(48px, 7vw, 88px); }
+.social h3 { font-size: var(--step--1); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.social ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border-top: 1px solid var(--line); }
+.social li { border-bottom: 1px solid var(--line); }
+.social a {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 18px 4px; text-decoration: none; font-size: var(--step-2); font-weight: 750; letter-spacing: -0.02em;
+}
+.social a svg { width: 20px; height: 20px; flex: none; transition: transform 0.3s ease, color 0.3s ease; }
+.social a:hover { color: var(--amber); }
+.social a:hover svg { transform: rotate(-45deg); }
+
+/* Rolling text links: the label slides up and a copy slides in from below */
+.roll { display: inline-flex; overflow: hidden; vertical-align: top; }
+.roll > span { display: block; position: relative; transition: transform 0.45s cubic-bezier(.2,.7,.1,1); }
+.roll > span::after { content: attr(data-t); content: attr(data-t) / ""; position: absolute; left: 0; top: 100%; }
+a:hover .roll > span, a:focus-visible .roll > span { transform: translateY(-100%); }
+
+/* Footer */
+footer { padding-block: 48px calc(120px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; }
+footer nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 22px; }
+footer nav a { display: inline-block; padding-block: 10px; text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+footer small { color: var(--muted); font-size: var(--step--1); }
+
+/* Floating pill nav */
+.pill {
+  position: fixed; z-index: 30;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  background: rgba(30, 30, 30, 0.82);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 999px; padding: 6px;
+  max-width: calc(100% - 24px);
+}
+.pill ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 2px; }
+.pill a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: 0 clamp(10px, 2.4vw, 18px);
+  text-decoration: none; font-size: 0.8125rem; font-weight: 700; border-radius: 999px; white-space: nowrap;
+  line-height: 1.3;
+}
+.pill a.here { color: var(--amber); }
+.pill .cta { background: var(--amber); color: var(--bg); }
+.pill .cta.here { color: var(--bg); }
+
+/* Custom cursor: fine pointers only, and never with reduced motion */
+.cur { display: none; }
+html.cursor-on, html.cursor-on a, html.cursor-on button { cursor: none; }
+html.cursor-on .cur { display: block; position: fixed; left: 0; top: 0; z-index: 100; pointer-events: none; }
+.cur-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--amber); }
+.cur-ring {
+  width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%;
+  border: 1.5px solid rgba(245, 245, 242, 0.55);
+  display: grid; place-items: center;
+  transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease, background 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+.cur-ring span { font-size: 0.75rem; font-weight: 800; color: var(--bg); opacity: 0; transition: opacity 0.2s ease; white-space: nowrap; }
+.cur-ring.hover { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-color: var(--amber); }
+.cur-ring.label { width: 88px; height: 88px; margin: -44px 0 0 -44px; background: var(--amber); border-color: var(--amber); }
+.cur-ring.label span { opacity: 1; }
+.cur-ring.down { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
+.cur.gone { opacity: 0; }
+</style>
+<style>[hidden] { display: none !important; } img { max-width: 100%; }</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Ideate Hub Ghana Limited, home">
+      <img class="bulb" src="images/ideate-bulb.png" width="171" height="240" alt="">
+      <span class="wordmark"><b>IDEATE<span>HUB</span></b><small>GHANA LIMITED</small></span>
+    </a>
+    <p class="where"><i aria-hidden="true"></i>Tamale, Northern Region · <span id="clock">GMT</span></p>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="bg" aria-hidden="true" style="--o:0.42; --pos:60% 40%"><img src="images/bg/hand-camera.jpg" width="640" height="795" alt=""></div>
+    <div class="wrap">
+      <h1 id="hero-title">
+        <span class="line l1" data-drift="-1">
+          <span class="word">Visualise</span>
+          <span class="note"><b>First, we listen.</b>Research the audience, the context and what success looks like.</span>
+        </span>
+        <span class="line l2" data-drift="1">
+          <span class="word">Conceptualise</span>
+          <span class="note"><b>Then, we think.</b>Strategy, messaging and the creative idea that ties it together.</span>
+        </span>
+        <span class="line l3" data-drift="-0.6">
+          <span class="wordline"><span class="word">Actualise</span><span class="stop" id="bulb" aria-hidden="true"><img src="images/ideate-bulb.png" width="171" height="240" alt=""></span></span>
+          <span class="note"><b>Then, we make it real.</b>Campaigns, content and experiences, delivered with care.</span>
+        </span>
+      </h1>
+
+      <div class="intro">
+        <p class="lit sm">A strategic marketing and communications agency in Tamale, working with organisations across Ghana and beyond.</p>
+        <ul class="segments" aria-label="Who we work with">
+          <li>NGOs &amp; development partners</li>
+          <li>Businesses</li>
+          <li>Startups</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track" id="track">
+      <ul><li>Strategic communications</li><li>SBCC</li><li>Brand identity</li><li>Campaigns</li><li>Impact storytelling</li><li>Pitch decks</li><li>Murals</li><li>Animation</li><li>Photo &amp; video</li></ul>
+    </div>
+  </div>
+
+  <section class="band" aria-label="What we believe">
+    <div class="bg" aria-hidden="true" style="--o:0.34"><img src="images/bg/dark-desk.jpg" width="736" height="981" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <p class="statement lit" data-hl="think,people">We think before we create. Every campaign, story and brand we make starts with the people it needs to move.</p>
+      <p class="band-foot"><span class="dot" aria-hidden="true"></span>Strategy-led, human-centred, rooted in Northern Ghana.</p>
+    </div>
+  </section>
+
+  <section class="section" id="services" aria-labelledby="services-title" style="padding-top:0">
+    <div class="bg" aria-hidden="true" style="--o:0.2; --pos:50% 30%"><img src="images/bg/desk-setup.jpg" width="735" height="911" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2 id="services-title" class="lit" data-hl="changes">Communication that changes what people do</h2>
+        <p class="lit sm">Three kinds of clients, one way of working. We shape the strategy first, then build everything it needs.</p>
+      </div>
+      <div class="services">
+        <article class="svc" data-rise>
+          <h3>NGOs &amp; development partners</h3>
+          <p class="for">For programmes that need communities to adopt a new behaviour, and donors who need to see the impact.</p>
+          <ul aria-label="NGO services"><li>Strategic communications</li><li>SBCC campaigns</li><li>Advocacy</li><li>Donor reports</li><li>Impact storytelling</li><li>Documentary &amp; multimedia</li><li>AI &amp; digital training</li></ul>
+        </article>
+        <article class="svc" data-rise>
+          <h3>Businesses</h3>
+          <p class="for">For companies ready to be seen, remembered and chosen over the competition.</p>
+          <ul aria-label="Business services"><li>Brand identity</li><li>Rebranding</li><li>Marketing strategy</li><li>Campaigns</li><li>Social media systems</li><li>PR &amp; launches</li></ul>
+        </article>
+        <article class="svc" data-rise>
+          <h3>Startups</h3>
+          <p class="for">For founders who need a clear story before they raise, launch or grow.</p>
+          <ul aria-label="Startup services"><li>Brand positioning</li><li>Launch storytelling</li><li>Pitch decks</li><li>Visibility strategy</li></ul>
+        </article>
+        <article class="svc" data-rise>
+          <h3>Creative studio</h3>
+          <p class="for">The hands that make the strategy visible, on screen, on paper and on walls.</p>
+          <ul aria-label="Creative services"><li>Graphic design</li><li>Digital art</li><li>Animation</li><li>Mural painting</li><li>Interior design</li><li>Photo &amp; video</li><li>Packaging</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work" aria-labelledby="work-title" style="padding-top:0">
+    <div class="bg left" aria-hidden="true" style="--o:0.24"><img src="images/bg/desk-headphones.jpg" width="736" height="981" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2 id="work-title" class="lit">Selected work</h2>
+        <p class="lit sm">A few projects, and what changed because of them.</p>
+      </div>
+      <div class="work" id="cases">
+        <article class="case" style="--i:0">
+          <div class="visual" data-tilt><img src="images/malaria-mother-child.jpg" width="1600" height="1131" alt="Illustration of a mother and baby asleep under a blue insecticide-treated net in a Northern Ghana bedroom"></div>
+          <div>
+            <p class="meta">NGO · Malaria prevention · Participatory SBCC</p>
+            <h3>Malaria prevention messages, co-created with the communities they were for</h3>
+            <p>We worked with caregivers, young people and local influencers to create materials that encourage consistent use of insecticide-treated nets and early treatment seeking.</p>
+            <p>Through community dialogues, story gathering and co-creation sessions, we turned what people told us into clear messages, illustrations and stories, checked against public health guidance.</p>
+            <blockquote>People are more likely to trust and act on messages they see themselves in.</blockquote>
+            <div class="thumbs">
+              <img src="images/malaria-net.jpg" width="1400" height="989" alt="Illustration of a young man resting under a green mosquito net" loading="lazy">
+              <img src="images/malaria-motorbike.jpg" width="1200" height="1200" alt="Illustration of a mother riding a motorbike with her son" loading="lazy">
+            </div>
+          </div>
+        </article>
+        <article class="case" style="--i:1">
+          <div class="visual fit" data-tilt><img src="images/tisalewa-logo.png" width="1600" height="1600" alt="Tisalewa brand board: the wordmark, four T shapes interlocking into the mark, and the mark used as a repeating pattern" loading="lazy"></div>
+          <div>
+            <p class="meta">Business · Fashion · Brand identity &amp; brand guide</p>
+            <h3>Tisalewa: an identity for accessible, expressive fashion</h3>
+            <p>We built the brand identity and brand guide for Tisalewa, a contemporary fashion brand making style accessible, expressive and comfortable.</p>
+            <p>The mark interlocks four T shapes into one emblem that also repeats as a pattern, so the brand carries across labels, packaging and prints.</p>
+          </div>
+        </article>
+        <article class="case" style="--i:2">
+          <div class="visual" data-tilt><img src="images/mural-sgbv.jpg" width="1600" height="847" alt="Mural in Tamale showing a pregnant schoolgirl with a hand over her mouth, beside the words: Let's unite to end violence against girls and women" loading="lazy" style="object-position: 30% 50%"></div>
+          <div>
+            <p class="meta">Youth &amp; advocacy · Mural · With Norsaac and Power to Youth</p>
+            <h3>A mural in Tamale against sexual and gender-based violence</h3>
+            <p>With Tamale's young people and local stakeholders, and support from Norsaac and the Power to Youth programme, the mural grew out of youth-led research, ideation and prototyping.</p>
+            <p>A year on, it is still sparking conversations about child marriage, teenage pregnancy and domestic violence, and stands as a permanent record of what young people in Tamale are calling for.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="studio" aria-labelledby="studio-title" style="padding-top:0">
+    <div class="bg" aria-hidden="true" style="--o:0.26; --pos:50% 35%"><img src="images/bg/monitor-lineart.jpg" width="736" height="1308" alt="" loading="lazy"></div>
+    <div class="wrap gallery-head">
+      <h2 id="studio-title" class="lit">From the studio</h2>
+      <p>Drag or swipe to see more</p>
+    </div>
+    <div class="strip" id="strip" data-cursor="Drag" tabindex="0" aria-label="Studio work, scrolls sideways">
+      <figure><img src="images/art-eyes.jpg" width="848" height="1200" alt="Scribble-line digital portrait of a child's eyes above a wrapped scarf, white on black" loading="lazy"><figcaption><b>Digital art</b>Scribble portrait series</figcaption></figure>
+      <figure><img src="images/art-mother-child.jpg" width="1200" height="1200" alt="Scribble-line digital drawing of a mother carrying her baby on her back" loading="lazy"><figcaption><b>Digital art</b>Mother and child, scribble portrait series</figcaption></figure>
+      <figure><img src="images/sabo-deliveries.jpg" width="1000" height="1000" alt="Social media announcement for Sabo Deliveries with a rider on a motorbike" loading="lazy"><figcaption><b>Social media design</b>Service announcement for Sabo Deliveries</figcaption></figure>
+      <figure><img src="images/training-climate-justice.jpg" width="1161" height="1200" alt="Flyer for a digital artistic activism training on climate justice, 1 to 3 April 2021" loading="lazy"><figcaption><b>Training</b>Digital artistic activism on climate justice, Global Platform Ghana, 2021</figcaption></figure>
+      <figure><img src="images/malaria-motorbike.jpg" width="1200" height="1200" alt="Illustration of a mother riding a motorbike with her son" loading="lazy"><figcaption><b>Illustration</b>Malaria prevention SBCC series</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section rooted" id="about" aria-labelledby="about-title">
+    <div class="bg" aria-hidden="true" style="--o:0.3; --pos:40% 50%"><img src="images/bg/cinematographer.jpg" width="736" height="736" alt="" loading="lazy"></div>
+    <div class="wrap rooted-grid">
+      <div class="copy">
+        <h2 id="about-title" class="lit" data-hl="tamale,">Made in Tamale, for the people you need to reach</h2>
+        <p class="lit sm">Good communication starts with knowing how people actually get their information. In Northern Ghana that is often a community radio programme, a WhatsApp voice note, or a conversation after the market.</p>
+        <p class="lit sm">We design for those channels and languages from the start, and bring the same thinking to national and international audiences.</p>
+      </div>
+      <div class="reach" data-rise>
+        <div>
+          <h3>Channels we plan for</h3>
+          <ul><li>Community radio</li><li>WhatsApp</li><li>Social media</li><li>Print &amp; outdoor</li><li>Community dialogues</li><li>Murals</li></ul>
+        </div>
+        <div>
+          <h3>Languages we work in</h3>
+          <ul><li>English</li><li>Dagbani</li><li>Hausa</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="bg" aria-hidden="true" style="--o:0.26; --pos:50% 30%"><img src="images/bg/gimbal.jpg" width="736" height="1307" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <h2 id="contact-title" class="lit" data-hl="change">Tell us what you want to change</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Email</span><span class="v" id="email">ideate101@gmail.com</span><button class="btn" type="button" data-copy="email" data-magnet data-cursor="Copy">Copy email</button></div>
+        <div class="row"><span class="k">WhatsApp</span><span class="v">+233 20 454 8512</span><a class="btn primary" href="https://wa.me/233204548512?text=Hello%20Ideate%20Hub%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-magnet data-cursor="Chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Chat on WhatsApp</a></div>
+        <div class="row"><span class="k">Studio</span><span class="v">Filling Point, off the Tamale–Kumbungu road, Tamale</span></div>
+      </div>
+
+      <div class="social" id="social">
+        <h3>Follow us</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/ideate1.0/" target="_blank" rel="noopener" data-cursor="Open"><span class="roll"><span data-t="Instagram">Instagram</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" fill="none" stroke="currentColor" stroke-width="2"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/106046226/" target="_blank" rel="noopener" data-cursor="Open"><span class="roll"><span data-t="LinkedIn">LinkedIn</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" fill="none" stroke="currentColor" stroke-width="2"/></svg></a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61571856795546" target="_blank" rel="noopener" data-cursor="Open"><span class="roll"><span data-t="Facebook">Facebook</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" fill="none" stroke="currentColor" stroke-width="2"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="mark" href="#top"><img class="logo-full" src="images/ideate-logo-white.png" width="611" height="700" alt="Ideate Hub Ghana Limited, back to top"></a>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="#services"><span class="roll"><span data-t="Services">Services</span></span></a></li>
+        <li><a href="#work"><span class="roll"><span data-t="Work">Work</span></span></a></li>
+        <li><a href="#about"><span class="roll"><span data-t="About">About</span></span></a></li>
+        <li><a href="#social"><span class="roll"><span data-t="Social">Social</span></span></a></li>
+        <li><a href="https://wa.me/233204548512" target="_blank" rel="noopener"><span class="roll"><span data-t="WhatsApp">WhatsApp</span></span></a></li>
+        <li><a href="#contact"><span class="roll"><span data-t="Contact">Contact</span></span></a></li>
+      </ul>
+    </nav>
+    <small>© 2026 Ideate Hub Ghana Limited</small>
+  </div>
+</footer>
+
+<nav class="pill" aria-label="Main">
+  <ul>
+    <li><a href="#services" data-spy="services"><span class="roll"><span data-t="Services">Services</span></span></a></li>
+    <li><a href="#work" data-spy="work"><span class="roll"><span data-t="Work">Work</span></span></a></li>
+    <li><a href="#about" data-spy="about"><span class="roll"><span data-t="About">About</span></span></a></li>
+    <li><a class="cta" href="#contact" data-spy="contact" data-magnet><span class="roll"><span data-t="Let's talk">Let's talk</span></span></a></li>
+  </ul>
+</nav>
+
+<div class="cur cur-ring" id="ring" aria-hidden="true"><span></span></div>
+<div class="cur cur-dot" id="dot" aria-hidden="true"></div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  const motion = () => !reduce.matches;
+
+  // Local time in Tamale (Ghana stays on GMT all year)
+  const clock = document.getElementById('clock');
+  const tick = () => {
+    try { clock.textContent = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Accra' }).format(new Date()) + ' GMT'; }
+    catch (e) { clock.textContent = 'GMT'; }
+  };
+  tick(); setInterval(tick, 30000);
+
+  // Scroll-lit text: keep the full sentence for screen readers, split a visual copy into words
+  const lits = [...document.querySelectorAll('.lit')].map(el => {
+    const text = el.textContent.trim().replace(/\s+/g, ' ');
+    const hl = new Set((el.dataset.hl || '').split(',').filter(Boolean).map(s => s.trim().toLowerCase()));
+    el.textContent = '';
+    const sr = document.createElement('span'); sr.className = 'sr'; sr.textContent = text;
+    const vis = document.createElement('span'); vis.setAttribute('aria-hidden', 'true');
+    text.split(' ').forEach((w, i, all) => {
+      const s = document.createElement('span');
+      const bare = w.replace(/[^a-z]/gi, '').toLowerCase();
+      s.className = 'w' + (hl.has(bare) ? ' hl' : '');
+      s.textContent = w;
+      vis.append(s);
+      if (i < all.length - 1) vis.append(' ');
+    });
+    el.append(sr, vis);
+    return { el, words: [...vis.querySelectorAll('.w')], lit: -1 };
+  });
+  const updateLits = () => {
+    const vh = innerHeight;
+    for (const L of lits) {
+      let n = L.words.length;
+      if (motion()) {
+        const r = L.el.getBoundingClientRect();
+        const start = vh * 0.92, end = vh * 0.5;
+        const p = Math.min(1, Math.max(0, (start - r.top) / (start - end + r.height * 0.6)));
+        n = Math.round(p * L.words.length);
+      }
+      if (n !== L.lit) { L.words.forEach((w, i) => w.classList.toggle('on', i < n)); L.lit = n; }
+    }
+  };
+
+  // Rise-in on view (transform only)
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('[data-rise]').forEach(el => io.observe(el));
+
+  // Marquee: steady drift, sped up and reversed by scrolling
+  const track = document.getElementById('track');
+  track.append(track.firstElementChild.cloneNode(true));
+  let mx = 0, dir = -1, boost = 0, lastY = scrollY;
+
+  // Hero lines drift apart as the hero scrolls away; cursor spotlight on the words; bulb glows near the cursor
+  const lines = [...document.querySelectorAll('[data-drift]')];
+  const words = [...document.querySelectorAll('.word')];
+  const bulb = document.getElementById('bulb');
+  const hero = document.querySelector('.hero');
+
+  // Case studies stack like pages: earlier ones shrink back as the next slides over
+  const cases = [...document.querySelectorAll('.case')];
+
+  // Section backdrops drift slowly against the scroll
+  const backdrops = [...document.querySelectorAll('.bg img')];
+
+  // Pill nav: mark the section in view
+  const spies = [...document.querySelectorAll('[data-spy]')];
+  const updateSpy = () => {
+    let cur = null;
+    for (const a of spies) { const s = document.getElementById(a.dataset.spy); if (s && s.getBoundingClientRect().top < innerHeight * 0.5) cur = a; }
+    spies.forEach(a => { a.classList.toggle('here', a === cur); a.toggleAttribute('aria-current', a === cur); });
+  };
+
+  // Cursor
+  const ring = document.getElementById('ring'), dot = document.getElementById('dot');
+  const ringLabel = ring.firstElementChild;
+  let px = innerWidth / 2, py = innerHeight / 2, rx = px, ry = py, cursorOn = false;
+  const setCursor = () => {
+    cursorOn = fine.matches && motion();
+    document.documentElement.classList.toggle('cursor-on', cursorOn);
+  };
+  setCursor();
+  fine.addEventListener?.('change', setCursor);
+  reduce.addEventListener?.('change', () => { setCursor(); updateLits(); });
+
+  addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    px = e.clientX; py = e.clientY;
+    ring.classList.remove('gone'); dot.classList.remove('gone');
+    const el = e.target instanceof Element ? e.target : null;
+    const t = el && el.closest('a, button, [data-tilt], .svc');
+    const label = el && el.closest('[data-cursor]');
+    ring.classList.toggle('hover', !!t && !label);
+    ring.classList.toggle('label', !!label);
+    ringLabel.textContent = label ? label.dataset.cursor : '';
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => { ring.classList.add('gone'); dot.classList.add('gone'); });
+  addEventListener('pointerdown', () => ring.classList.add('down'));
+  addEventListener('pointerup', () => ring.classList.remove('down'));
+
+  // Magnetic buttons and tilting project images (mouse only)
+  const magnets = [...document.querySelectorAll('[data-magnet]')];
+  const tilts = [...document.querySelectorAll('[data-tilt]')];
+  tilts.forEach(el => {
+    el.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse' || !motion()) return;
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      el.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
+      el.style.setProperty('--tx', (x * 24).toFixed(1) + 'px');
+      el.style.setProperty('--ty', (y * 24).toFixed(1) + 'px');
+    });
+    el.addEventListener('pointerleave', () => ['--rx', '--ry', '--tx', '--ty'].forEach(p => el.style.removeProperty(p)));
+  });
+
+  // One animation loop for everything that moves
+  const frame = () => {
+    const vh = innerHeight, y = scrollY;
+    const dy = y - lastY; lastY = y;
+    if (dy) dir = dy > 0 ? -1 : 1;
+    boost = boost * 0.9 + Math.min(40, Math.abs(dy)) * 0.12;
+
+    if (motion()) {
+      // marquee
+      const half = track.scrollWidth / 2;
+      mx += dir * (0.6 + boost);
+      if (mx <= -half) mx += half;
+      if (mx > 0) mx -= half;
+      track.style.transform = `translate3d(${mx.toFixed(1)}px,0,0)`;
+
+      // hero drift + cursor parallax
+      const hr = hero.getBoundingClientRect();
+      const out = Math.min(1, Math.max(0, -hr.top / Math.max(1, hr.height)));
+      const cx = cursorOn ? (px / innerWidth - 0.5) : 0;
+      lines.forEach(l => {
+        const d = parseFloat(l.dataset.drift);
+        l.style.translate = `${(d * out * 22 + d * cx * -2).toFixed(2)}vw 0`;
+      });
+      if (cursorOn) {
+        words.forEach(w => {
+          const r = w.getBoundingClientRect();
+          w.style.setProperty('--mx', (px - r.left).toFixed(0) + 'px');
+          w.style.setProperty('--my', (py - r.top).toFixed(0) + 'px');
+        });
+        const br = bulb.getBoundingClientRect();
+        const dist = Math.hypot(px - (br.left + br.width / 2), py - (br.top + br.height / 2));
+        bulb.style.setProperty('--glow', Math.max(0.2, 1 - dist / 420).toFixed(2));
+      }
+
+      // stacking cases (only where they are sticky)
+      if (getComputedStyle(cases[0]).position === 'sticky') {
+        cases.forEach((c, i) => {
+          const next = cases[i + 1];
+          if (!next) return;
+          const p = Math.min(1, Math.max(0, 1 - (next.getBoundingClientRect().top - c.getBoundingClientRect().top) / (vh * 0.8)));
+          c.style.transform = `scale(${(1 - p * 0.06).toFixed(4)})`;
+          c.style.filter = `brightness(${(1 - p * 0.45).toFixed(3)})`;
+        });
+      } else cases.forEach(c => { c.style.transform = ''; c.style.filter = ''; });
+
+      // backdrop parallax, only for sections on screen
+      backdrops.forEach(img => {
+        const r = img.parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        const p = (r.top + r.height / 2 - vh / 2) / vh;
+        img.style.translate = `0 ${(-p * 48).toFixed(1)}px`;
+      });
+
+      // cursor + magnets
+      if (cursorOn) {
+        rx += (px - rx) * 0.18; ry += (py - ry) * 0.18;
+        dot.style.transform = `translate3d(${px}px,${py}px,0)`;
+        ring.style.transform = `translate3d(${rx.toFixed(1)}px,${ry.toFixed(1)}px,0)`;
+        magnets.forEach(m => {
+          const r = m.getBoundingClientRect();
+          const mxp = px - (r.left + r.width / 2), myp = py - (r.top + r.height / 2);
+          const near = Math.hypot(mxp, myp) < Math.max(r.width, r.height);
+          m.style.translate = near ? `${(mxp * 0.25).toFixed(1)}px ${(myp * 0.35).toFixed(1)}px` : '';
+        });
+      }
+    } else {
+      track.style.transform = '';
+      lines.forEach(l => l.style.translate = '');
+      cases.forEach(c => { c.style.transform = ''; c.style.filter = ''; });
+      backdrops.forEach(img => img.style.translate = '');
+    }
+    updateLits();
+    updateSpy();
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+
+  // Copy buttons
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    const label = btn.textContent;
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(btn.dataset.copy);
+      const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = label, 1800); };
+      const fallback = () => { const s = getSelection(); const rg = document.createRange(); rg.selectNodeContents(el); s.removeAllRanges(); s.addRange(rg); btn.textContent = 'Selected, press copy'; setTimeout(() => btn.textContent = label, 2200); };
+      try { navigator.clipboard.writeText(el.textContent.trim()).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+
+  // Studio strip: drag sideways with the mouse (touch and trackpads scroll natively)
+  const strip = document.getElementById('strip');
+  let dragX = null, startLeft = 0, moved = false;
+  strip.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    dragX = e.clientX; startLeft = strip.scrollLeft; moved = false;
+    strip.setPointerCapture(e.pointerId);
+  });
+  strip.addEventListener('pointermove', e => {
+    if (dragX === null) return;
+    const dx = e.clientX - dragX;
+    if (Math.abs(dx) > 4) { moved = true; strip.classList.add('dragging'); }
+    strip.scrollLeft = startLeft - dx;
+  });
+  const endDrag = () => { dragX = null; strip.classList.remove('dragging'); };
+  strip.addEventListener('pointerup', endDrag);
+  strip.addEventListener('pointercancel', endDrag);
+  strip.addEventListener('click', e => { if (moved) { e.preventDefault(); moved = false; } }, true);
+  strip.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      strip.scrollBy({ left: (e.key === 'ArrowRight' ? 1 : -1) * strip.clientWidth * 0.6, behavior: motion() ? 'smooth' : 'auto' });
+    }
+  });
+})();
+</script>
+</body>
+</html>
